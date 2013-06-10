@@ -5,8 +5,13 @@ class CreateUsers < ActiveRecord::Migration
       t.string :last_name,       :null => false
       t.string :username,        :null => false, :limit => 32
       t.string :email,           :null => false
+      t.integer :total_karma,    :default => 0
 
       t.timestamps
+
     end
+    add_index :users, :total_karma
+    add_index :users, :username
+    add_index :users, :email
   end
 end
